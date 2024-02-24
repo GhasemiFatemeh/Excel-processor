@@ -27,8 +27,7 @@ public class FileController {
     @PostMapping("/uploadExcel")
     public Object uploadExcel(@RequestParam("file") MultipartFile file) {
         try {
-            Set<Bill> response = fileService.processExcelFile(file);
-            return response;
+            return fileService.getResult(file);
         } catch (IOException e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(new HashMap<>());
         }
